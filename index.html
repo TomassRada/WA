@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="query.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>File uploader</title>
+</head>
+<body>
+    <!---                   
+    <form action="conn.php?cmd=saveDrinks" method="post">
+        <div id="form">
+            <input type="radio" id="Masopust Lukáš" name="user" value="1" required="">
+            <label for="Masopust Lukáš" class="userLabel">Masopust Lukáš</label><br>
+            <input type="radio" id="Molič Jan" name="user" value="2" required="">
+            <label for="Molič Jan" class="userLabel">Molič Jan</label><br>
+            <input type="radio" id="t" name="user" value="3" required=""><label for="t" class="userLabel">t</label><br>
+            <label for="Mléko">Mléko</label><input type="number" name="mleko" value="0" required=""><br>
+            <label for="Espresso">Espresso</label><input type="number" name="presso" value="0" required=""><br>
+            <label for="Coffe">Coffe</label><input type="number" name="coffe" value="0" required=""><br>
+            <label for="Long">Long</label><input type="number" name="long" value="0" required=""><br>
+            <label for="Doppio+">Doppio+</label><input type="number" name="doppio" value="0" required=""><br>
+
+        </div>
+        <input type="submit" value="odeslat">
+
+    </form>
+    
+
+    <div>
+        <input id="fileupload" type="file" name="fileupload" />
+        <button id="upload-button" onclick="uploadFile()"> Upload </button>
+    </div>
+    -->
+
+    <div class="container" >
+        <input type="file" name="file" id="file">
+
+        <!-- Drag and Drop container-->
+        <div class="upload-area"  id="uploadfile">
+            <h1>Drag and Drop file here</h1>
+        </div>
+    </div>
+    
+    <script>
+        async function uploadFile() {
+            let formData = new FormData();           
+            formData.append("file", fileupload.files[0]);
+            await fetch('upload.php', {
+              method: "POST", 
+              body: formData
+            });    
+            alert('The file has been uploaded successfully.');
+        }
+        </script>
+
+</body>
+</html>
